@@ -1,0 +1,17 @@
+<div class="m-md-5 m-lg-5 content-section implementation carousel-demo pt-5">
+  <div class="card" style="border: 0px">
+    <p-carousel class="back" [value]="listaCategorias" styleClass="custom-carousel" [numVisible]="6" [numScroll]="1"
+      [circular]="true" [autoplayInterval]="1000" [responsiveOptions]="responsiveOptions" [showIndicators]="false">
+      <ng-template let-categoria pTemplate="item">
+        <div class="item text-center">
+          <a href="#" class="text-decoration-none text-center">
+            <i class="fs-1 bi {{categoria.icono}} green3"></i>
+            <h5 class="card-title green3" style="margin-top: 0px">
+              {{ categoria.name }}
+            </h5>
+          </a>
+        </div>
+      </ng-template>
+    </p-carousel>
+  </div>
+</div>

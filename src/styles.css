@@ -1,0 +1,96 @@
+a:hover{
+  color: #046A38;
+}
+.green{
+  color: #86BC25;
+}
+.green2 {
+  color: #2C5234;
+}
+.green3 {
+  color: #046A38;
+}
+.green4 {
+  color: #43B02A;
+}
+.lightGreenBack{
+  background-color: #B9DD88;
+}
+.border {
+  border-color: #badd8893;
+}
+.lightGreen{
+  color: #B9DD88;
+}
+.greenBack {
+background-color: #86BC25;
+}
+.greenBack2 {
+  background-color: #2C5234;
+}
+.greenBack3 {
+  background-color: #046A38;
+}
+.pink {
+  color: #EA462F;
+}
+.back {
+background-color: #F9F9F9;
+}
+.gray5 {
+color: #555555;
+}
+.gray6 {
+color: #666666;
+}
+.gray7 {
+color: #777777;
+}
+
+.textoConPuntos {
+  display: block;
+  display: -webkit-box;
+  max-width: 100%;
+  height: 3.7em;
+  margin: 0 auto;
+ 
+  line-height: 1.2;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.textoConPuntosTitulo{
+  display: block;
+  display: -webkit-box;
+  max-width: 100%;
+  height: 1.2em;
+  margin: 0 auto;
+ 
+  line-height: 1.2;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.letraResponsiva {
+  font-size: calc(0.7em + 1vw);
+}
+
+.letraResponsivaDescripcion {
+  font-size: calc(0.5em + 0.7vw);
+}
+
+.letraResponsivaTipoPrecio {
+  font-size: calc(0.4em + 0.6vw);
+}
+
+.letraResponsivaUbicacion {
+  font-size: calc(0.5em + 0.8vw);
+}
+
+.cardAnuncio:hover{
+cursor: pointer;
+}

@@ -1,0 +1,154 @@
+<!-- <section class="vh-75 w-100 mt-3">
+  <div class="py-1 h-75">
+    <div class="row d-flex justify-content-center align-items-center ms-auto me-auto w-100">
+
+      <div class="col col-sm-12 col-md-3 col-lg-3 rounded-3 shadow mb-5 bg-body" style="border: 1px solid #74bb11ad;">
+        <div class="px-3 text-center">
+          <img class="img-fluid rounded-circle p-5"
+            src="https://i.pinimg.com/originals/ba/d4/5a/bad45a40fa6e153ef8d1599ba875102c.png" alt="foto de perfil">
+        </div>
+        <h3 class="green text-center">
+          {{usuarioRegistrado.firstName?.charAt(0)?.toUpperCase()}}{{usuarioRegistrado.firstName?.slice(1)}}
+          {{usuarioRegistrado.lastName?.charAt(0)?.toUpperCase()}}</h3>
+        <hr class="green">
+        <a href="#" class="btn lightGreenBack text-white my-5">Cambiar foto</a>
+        <ul class="gray6 py-3 fw-bold" style="list-style:none">
+          <li><a href="#" class="gray6 text-decoration-none">Mis datos</a></li>
+          <li><a href="#" *ngIf="findRolUser() === 'user'" class="gray6 text-decoration-none">Mis Job's</a></li>
+          <li><a href="#" *ngIf="findRolUser() === 'user'" class="gray6 text-decoration-none">Mis Favoritos</a></li>
+          <li><a href="#" *ngIf="findRolUser() === 'user'" class="gray6 text-decoration-none">Visualizar perfil público</a></li>
+          <li><a href="#" *ngIf="findRolUser() === 'admin'" class="gray6 text-decoration-none">Lista de Job's</a></li>
+          <li><a href="#" *ngIf="findRolUser() === 'admin'" class="gray6 text-decoration-none">Lista de Usuarios</a></li>
+          <li class="mt-5"><a (click)="cerrarSesion()" href="#" class="green text-decoration-none"><i class="bi bi-door-open green"></i>
+            Cerrar Sesión</a></li>
+        </ul>
+      </div> -->
+
+<!-- <div class="col col-sm-12 col-md-7 col-lg-7 offset-md-1 offset-lg-1 rounded-3 shadow p-3 mb-5 bg-body"
+        style="border: 1px solid #74bb11ad;"> -->
+<form autocomplete="off" [formGroup]="miFormularioDatosPerfil" (ngSubmit)="submitFormulario()" class="row g-3 p-3">
+
+  <h3 class="green2 p-3 text-center">Actualiza tus datos
+    {{usuarioRegistrado.firstName?.charAt(0)?.toUpperCase()}}{{usuarioRegistrado.firstName?.slice(1)}}
+    {{usuarioRegistrado.lastName?.charAt(0)?.toUpperCase()}}</h3>
+  <hr class="green3 p-1">
+  <h4 class="gray6 text-start">Datos del perfil:</h4>
+  <!-- Nombre -->
+  <div class="col-md-4">
+    <label for="firstName" class="form-label ms-2">Nombre:</label>
+    <input type="text" class="form-control" formControlName="firstName" >
+    <span class="form-text text-danger" *ngIf="campoNoValido('firstName')">
+      Sólo letras
+    </span>
+  </div>
+
+  <!-- Apellidos -->
+  <div class="col-md-8">
+    <label for="lastName" class="form-label ms-2">Apellidos:</label>
+    <input type="text" class="form-control" formControlName="lastName">
+    <span class="form-text text-danger" *ngIf="campoNoValido('lastName')">
+              Sólo letras
+            </span>
+  </div>
+
+  <!-- Email -->
+  <div class="col-md-8">
+    <label for="email" class="form-label ms-2">Correo electrónico:</label>
+    <input type="email" class="form-control" value="{{usuarioRegistrado.email}}" readonly>
+
+  </div>
+
+  <!-- Telefono -->
+  <div class="col-md-4">
+    <label for="phoneNumber" class="form-label ms-2">Teléfono:</label>
+    <input type="text" class="form-control" formControlName="phoneNumber" maxlength="9">
+    <span class="form-text text-danger" *ngIf="campoNoValido('phoneNumber')">
+              Deben ser 9 dígitos.
+            </span>
+  </div>
+
+  <!-- Direcccion -->
+  <div class="col-md-12 text-start">
+    <label for="inputEmail4" class="form-label ms-2">Dirección:</label>
+    <input type="text" class="form-control" formControlName="location">
+    <span class="form-text text-danger" *ngIf="campoNoValido('location')">
+              La dirección es requerida
+            </span>
+  </div>
+
+  <!-- Nacimiento -->
+  <!-- <div class="col-md-4 text-start">
+          <label for="inputPassword4" class="form-label ms-2">Nacimiento</label>
+          <input type="date" class="form-control" formControlName="nacimiento">
+
+  </div> -->
+
+  <div class="col-md-12 row">
+    <label class="form-label mt-3 text-center gray5 pt-3">Selecciona nueva foto de perfil</label>
+    <div class="image-upload text-center">
+      <!-- <label for="file-input">
+        <i class="bi bi-image navy" alt="Click aquí para subir tu foto" title="Click aquí para subir tu foto"></i>
+      </label> -->
+      <input id="file-input" type="file" (change)="selectFile($event)"/>
+      <img *ngIf="previsualizarImagen==''" class="img-fluid rounded-circle p-5 text-center" style="max-height: 200px;"
+            src={{getImage(usuarioRegistrado.file!)}} alt="foto de perfil">
+      <img *ngIf="previsualizarImagen!=''" class="img-fluid rounded-circle p-5 text-center" style="max-height: 200px;"
+      src={{previsualizarImagen}} alt="foto de perfil">
+    </div>
+
+
+  </div>
+
+  <div class="w-100 text-center">
+    <input type="submit" class="btn rounded-3 greenBack3 text-white w-25" value="Guardar" [disabled]="!miFormularioDatosPerfil.valid">
+  </div>
+</form>
+
+
+<hr class="green3 p-1">
+
+
+<form autocomplete="off" [formGroup]="miFormularioDatosPass" (ngSubmit)="submitFormularioPass()" class="row g-3 p-3 gray5 rounded-3">
+  <h4 class="gray6 text-start">Datos de seguridad:</h4>
+  <!-- Password antigua-->
+  <div class="row">
+  <div class="col-md-6">
+    <label for="passwordOld" class="form-label ms-2">Contraseña actual:</label>
+    <input type="password" class="form-control" formControlName="passwordOld" placeholder="Contraseña">
+
+  </div>
+</div>
+
+  <!-- Password -->
+  <div class="row">
+  <div class="col-md-6">
+    <label for="passwordNew" class="form-label ms-2">Contraseña nueva:</label>
+    <input type="password" class="form-control" formControlName="passwordNew" placeholder="Contraseña">
+    <span class="form-text text-danger"
+                            *ngIf="campoNoValidoPass('passwordNew')">
+                          La contraseña debe de ser mayor de 6 caracteres.
+                </span>
+  </div>
+
+  <!-- Password2 -->
+  <div class="col-md-6">
+    <label for="passwordNew2" class="form-label ms-2">Repite contraseña:</label>
+    <input type="password" class="form-control" formControlName="passwordNew2" placeholder="Confirma contraseña">
+    <span class="form-text text-danger"
+                  *ngIf="campoNoValidoPass('passwordNew2')">
+                  Las contraseñas deben de ser iguales
+                  </span>
+  </div>
+</div>
+
+  <div class="w-100 text-center">
+    <input type="submit" class="btn rounded-3 greenBack3 text-white w-25" value="Guardar">
+  </div>
+
+</form>
+
+<!-- </div> -->
+<!-- </div>
+
+  </div>
+</section> -->

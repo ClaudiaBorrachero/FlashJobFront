@@ -1,0 +1,21 @@
+<div class="row pt-5 w-100 justify-content-center back h-75">
+  <div class="col-12 col-md4 col-lg-4 text-center">
+    <img class="img-fluid rounded-circle p-5 w-50"
+            src={{getImage(usuarioRegistrado.file!)}} alt="foto de perfil">
+  </div>
+  <div class="col-12 col-md-4 col-lg-4 text-center">
+    <!-- <p-rating [ngModel]="val3" readonly="true" stars="10" [cancel]="false"></p-rating> -->
+    <h3 class="p-1">
+      {{usuarioRegistrado.firstName?.charAt(0)?.toUpperCase()}}{{usuarioRegistrado.firstName?.slice(1)}}
+      {{usuarioRegistrado.lastName?.charAt(0)?.toUpperCase()}}</h3>
+  </div>
+  <div class="col-12 col-md-4 col-lg-4 text-center">
+    <i class="bi bi-geo-alt-fill"></i>
+    {{usuarioRegistrado.location}}
+  </div>
+</div>
+
+<div class="row w-100 justify-content-start pt-5">
+    <a href="#" [routerLink]="['anuncios_ofertados']" class="gray6 text-decoration-none col-2 text-center" routerLinkActive="active">Ofertados</a>
+  <router-outlet></router-outlet>
+</div>
